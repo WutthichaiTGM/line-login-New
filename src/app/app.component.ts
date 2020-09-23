@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
   LineGetToken() {
     const accessToken = liff.getAccessToken();
     const IDToken = liff.getIDToken();
+    console.log('accessToken:',accessToken);
+    console.log('IDToken:',IDToken);
     const instance = axios.create({
       baseURL:
         "https://asia-northeast1-incubate-internship-2020.cloudfunctions.net/createCustomToken",
@@ -44,6 +46,7 @@ export class AppComponent implements OnInit {
     await liff.init({ liffId: "1654905366-pdX7j1KM" });
     if (liff.isLoggedIn()) {
       this.getUserProfile();
+      this.LineGetToken();
     } else {
       liff.login();
     }
