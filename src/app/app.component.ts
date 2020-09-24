@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     console.log('IDToken:',IDToken);
     const instance = axios.create({
       baseURL:
-        "https://asia-northeast1-incubate-internship-2020.cloudfunctions.net/createCustomToken",
+        "https://asia-northeast1-incubate-internship-2020.cloudfunctions.net/TestToken",
       headers: { "Access-Control-Allow-Origin": "*" }
     });
     instance
