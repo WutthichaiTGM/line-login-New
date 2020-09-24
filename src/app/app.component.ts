@@ -1,7 +1,12 @@
 import { Component, VERSION, OnInit } from "@angular/core";
 import liff from "@line/liff";
 import axios from "axios";
-
+export interface LINEUSERDATA {
+  displayName: string;
+  email: string;
+  pictureUrl: string;
+  statusMessage: string;
+}
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
@@ -9,7 +14,7 @@ import axios from "axios";
 })
 export class AppComponent implements OnInit {
   // name = 'Angular ' + VERSION.major;
-
+userData: LINEUSERDATA;
   ngOnInit(): void {
     this.main();
   }

@@ -1,4 +1,9 @@
 <!-- <hello name="{{ name }}"></hello> -->
-<p>
+<!-- <p>
   Start editing to see some magic happen :)
-</p>
+</p> -->
+<div class="header">
+	<h2>{{userData? userData['displayName']: ''}}</h2>
+	<h4>{{userData? userData['email']: ''}}</h4>
+</div>
+<img src="{{userData? userData['pictureUrl']: ''}}" alt="image not found">
