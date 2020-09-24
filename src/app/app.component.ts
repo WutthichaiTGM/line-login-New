@@ -24,22 +24,22 @@ export class AppComponent implements OnInit {
     const IDToken = liff.getIDToken();
     console.log('accessToken:',accessToken);
     console.log('IDToken:',IDToken);
-    // const instance = axios.create({
-    //   baseURL:
-    //     "https://asia-northeast1-incubate-internship-2020.cloudfunctions.net/TestToken",
-    //   headers: { "Access-Control-Allow-Origin": "*" }
-    // });
-    // instance
-    //   .post("body", {
-    //     access_token: accessToken,
-    //     id_token: IDToken
-    //   })
-    //   .then(async response => {
-    //     console.log('response:',response);
-    //   })
-    //   .catch(err => {
-    //     console.error('err:',err);
-    //   });
+    const instance = axios.create({
+      baseURL:
+        "https://asia-northeast1-incubate-internship-2020.cloudfunctions.net/TestToken",
+      headers: { "Access-Control-Allow-Origin": "*" }
+    });
+    instance
+      .post("body", {
+        access_token: accessToken,
+        id_token: IDToken
+      })
+      .then(async response => {
+        console.log('response:',response);
+      })
+      .catch(err => {
+        console.error('err:',err);
+      });
   }
 
   async main() {
