@@ -50,7 +50,7 @@ userData: LINEUSERDATA;
   async main() {
     await liff.init({ liffId: "1654905366-pdX7j1KM" });
     if (liff.isLoggedIn()) {
-      this.getUserProfile();
+      // this.getUserProfile();
       this.LineGetToken();
     } else {
       liff.login();
