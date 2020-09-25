@@ -1,7 +1,7 @@
 import { Component, VERSION, OnInit } from "@angular/core";
 import liff from "@line/liff";
 import axios from "axios";
-import * as firebase from 'firebase/app';
+import * as firebase from "firebase/app";
 
 export interface LINEUSERDATA {
   displayName: string;
@@ -48,16 +48,16 @@ export class AppComponent implements OnInit {
         firebase
           .auth()
           .signInWithCustomToken(response.data)
-          .then((response)=>{
-            console.log(response);
+          .then(response => {
+            return true;
           })
-          .catch((error)=> {
+          .catch(error => {
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log('errorCode:',errorCode);
-            console.log('errorMessage:',errorMessage);
-
+            console.log("errorCode:", errorCode);
+            console.log("errorMessage:", errorMessage);
+            return false;
             // ...
           });
       })
