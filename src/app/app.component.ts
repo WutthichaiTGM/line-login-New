@@ -1,7 +1,7 @@
 import { Component, VERSION, OnInit } from "@angular/core";
 import liff from "@line/liff";
 import axios from "axios";
-// import * as firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 
 export interface LINEUSERDATA {
   displayName: string;
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     // const profile = await liff.getProfile();
     // console.log("profile:", profile);
   }
-
+  res;
   LineGetToken() {
     const accessToken = liff.getAccessToken();
     const IDToken = liff.getIDToken();
@@ -42,17 +42,24 @@ export class AppComponent implements OnInit {
         access_token: accessToken,
         id_token: IDToken
       })
-      .then(async response => {
-        console.log("response:", response);
-        // firebase
-        //   .auth()
-        //   .signInWithCustomToken(token)
-        //   .catch(function(error) {
-        //     // Handle Errors here.
-        //     var errorCode = error.code;
-        //     var errorMessage = error.message;
-        //     // ...
-        //   });
+      .then(response => {
+        // console.log("response:", response);
+        // console.log("token:", response.data);
+        firebase
+          .auth()
+          .signInWithCustomToken(response.data)
+          .then((response)=>{
+            console.log(response);
+          })
+          .catch((error)=> {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log('errorCode:',errorCode);
+            console.log('errorMessage:',errorMessage);
+
+            // ...
+          });
       })
       .catch(err => {
         console.error("err:", err);
