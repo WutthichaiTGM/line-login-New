@@ -1,12 +1,15 @@
 import { Component, VERSION, OnInit } from "@angular/core";
 import liff from "@line/liff";
 import axios from "axios";
+// import * as firebase from 'firebase/app';
+
 export interface LINEUSERDATA {
   displayName: string;
   email: string;
   pictureUrl: string;
   statusMessage: string;
 }
+
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
@@ -14,7 +17,7 @@ export interface LINEUSERDATA {
 })
 export class AppComponent implements OnInit {
   // name = 'Angular ' + VERSION.major;
-userData: LINEUSERDATA;
+  userData: LINEUSERDATA;
   ngOnInit(): void {
     this.main();
   }
@@ -40,10 +43,19 @@ userData: LINEUSERDATA;
         id_token: IDToken
       })
       .then(async response => {
-        console.log('response:',response);
+        console.log("response:", response);
+        // firebase
+        //   .auth()
+        //   .signInWithCustomToken(token)
+        //   .catch(function(error) {
+        //     // Handle Errors here.
+        //     var errorCode = error.code;
+        //     var errorMessage = error.message;
+        //     // ...
+        //   });
       })
       .catch(err => {
-        console.error('err:',err);
+        console.error("err:", err);
       });
   }
 
