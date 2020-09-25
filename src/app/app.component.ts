@@ -20,15 +20,15 @@ userData: LINEUSERDATA;
   }
 
   async getUserProfile() {
-    const profile = await liff.getProfile();
-    console.log("profile:", profile);
+    // const profile = await liff.getProfile();
+    // console.log("profile:", profile);
   }
 
   LineGetToken() {
     const accessToken = liff.getAccessToken();
     const IDToken = liff.getIDToken();
-    console.log('accessToken:',accessToken);
-    console.log('IDToken:',IDToken);
+    // console.log('accessToken:',accessToken);
+    // console.log('IDToken:',IDToken);
     const instance = axios.create({
       baseURL:
         "https://asia-northeast1-incubate-internship-2020.cloudfunctions.net/TestToken",
