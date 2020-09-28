@@ -1,13 +1,14 @@
 import { Component, VERSION, OnInit } from "@angular/core";
 import liff from "@line/liff";
 import axios from "axios";
-import * as firebase from "firebase/app";
+import * as firebase from 'firebase/app';
+
 
 export interface LINEUSERDATA {
   displayName: string;
   email: string;
   pictureUrl: string;
-  statusMessage: string;
+  // statusMessage: string;
 }
 
 @Component({
@@ -43,26 +44,32 @@ export class AppComponent implements OnInit {
         id_token: IDToken
       })
       .then(response => {
-        // console.log("response:", response);
-        // console.log("token:", response.data);
         firebase
           .auth()
           .signInWithCustomToken(response.data)
-          .then(response => {
-            return true;
+          .then((res) => {
+            console.log('response:', res);
+            if (res.operationType == 'signIn') {
+              this.userData = {
+                pictureUrl: res.user.photoURL,
+                displayName: res.user.displayName,
+                email: res.user.email,
+              };
+            }
+            console.log('userData:',this.userData);
+            
+            // return true;
           })
-          .catch(error => {
-            // Handle Errors here.
+          .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log("errorCode:", errorCode);
-            console.log("errorMessage:", errorMessage);
-            return false;
-            // ...
+            console.log('errorCode:', errorCode);
+            console.log('errorMessage:', errorMessage);
+            // return false;
           });
       })
-      .catch(err => {
-        console.error("err:", err);
+      .catch((err) => {
+        console.error('err:', err);
       });
   }
 

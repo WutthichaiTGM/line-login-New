@@ -1,4 +1,5 @@
 export const environment = {
+
   production: false,
   firebaseApp: {
     apiKey: 'AIzaSyAIqohg5_f_VBJkNydAN_fDcZIU4kexOBM',
@@ -9,6 +10,5 @@ export const environment = {
     messagingSenderId: '737851649336',
     appId: '1:737851649336:web:8456a2de3d168ac62b25cd',
     measurementId: 'G-H2QLLHPJ7Q'
-  },
-  liffId: '1654905366-pdX7j1KM'
+  }
 };
